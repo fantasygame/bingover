@@ -41,7 +41,7 @@ class FrazesController < ApplicationController
   # GET /frazes
   # GET /frazes.json
   def index
-    @frazes = Fraze.all
+    @frazes = Fraze.all.order(created_at: :desc)
   end
 
   # GET /frazes/1
