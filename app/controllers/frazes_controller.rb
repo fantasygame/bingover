@@ -23,6 +23,10 @@ class FrazesController < ApplicationController
     end
   end
 
+  def all_games
+    @users = User.all.order(:created_at).reject { |u| u.user_frazes.count != 25 }
+  end
+
   def toggle_check
     if UserFraze.exists?(params[:user_fraze_id])
       user_fraze = UserFraze.find(params[:user_fraze_id])

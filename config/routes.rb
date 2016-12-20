@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     collection do
       get :create_game
       get :game
+      get :all_games
       get :toggle_check
     end
   end
