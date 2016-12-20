@@ -14,8 +14,9 @@
     - @frazes.each do |fraze|
       %tr
         %td= fraze.body
-        %td= link_to 'Show', fraze
-        %td= link_to 'Edit', edit_fraze_path(fraze)
-        %td= link_to 'Destroy', fraze, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td
+          .btn-group
+            = link_to 'Edit', edit_fraze_path(fraze), class: 'btn btn-sm btn-default'
+            = link_to 'Destroy', fraze, :method => :delete, class: 'btn btn-sm btn-danger', :data => { :confirm => 'Are you sure?' }
 
 %br
