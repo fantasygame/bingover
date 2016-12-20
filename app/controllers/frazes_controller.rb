@@ -65,7 +65,7 @@ class FrazesController < ApplicationController
 
     respond_to do |format|
       if @fraze.save
-        format.html { redirect_to @fraze, notice: 'Fraze was successfully created.' }
+        format.html { redirect_to frazes_path, notice: 'Fraze was successfully created.' }
         format.json { render :show, status: :created, location: @fraze }
       else
         format.html { render :new }
