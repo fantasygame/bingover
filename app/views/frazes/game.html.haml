@@ -3,7 +3,8 @@
     %tr
       - slice.each do |user_fraze|
         %td
-          = link_to user_fraze.fraze.body, toggle_check_frazes_path(user_fraze_id: user_fraze.id)
           - if user_fraze.checked?
-            X
+            %strong X
+          = link_to user_fraze.fraze.body, toggle_check_frazes_path(user_fraze_id: user_fraze.id)
+
 
