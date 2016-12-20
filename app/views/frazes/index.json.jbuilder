@@ -1,0 +1,1 @@
+json.array! @frazes, partial: 'frazes/fraze', as: :fraze

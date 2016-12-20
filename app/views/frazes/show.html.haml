@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Body:
+  = @fraze.body
+
+= link_to 'Edit', edit_fraze_path(@fraze)
+\|
+= link_to 'Back', frazes_path

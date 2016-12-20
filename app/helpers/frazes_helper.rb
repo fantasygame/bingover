@@ -1,0 +1,2 @@
+module FrazesHelper
+end

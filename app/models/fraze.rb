@@ -1,0 +1,2 @@
+class Fraze < ApplicationRecord
+end

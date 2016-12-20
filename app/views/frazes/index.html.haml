@@ -1,0 +1,21 @@
+%h1 Listing frazes
+
+%table
+  %thead
+    %tr
+      %th Body
+      %th
+      %th
+      %th
+
+  %tbody
+    - @frazes.each do |fraze|
+      %tr
+        %td= fraze.body
+        %td= link_to 'Show', fraze
+        %td= link_to 'Edit', edit_fraze_path(fraze)
+        %td= link_to 'Destroy', fraze, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Fraze', new_fraze_path
