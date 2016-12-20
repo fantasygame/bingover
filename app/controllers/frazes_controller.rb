@@ -1,6 +1,28 @@
 class FrazesController < ApplicationController
   before_action :set_fraze, only: [:show, :edit, :update, :destroy]
 
+  def create_game
+    if Fraze.count < 25
+      redirect_to frazes_path, alert: "Not enough frazes"
+    else
+      UserFraze.where(user: current_user).destroy_all
+      random_ids = Fraze.pluck(:id).shuffle.first(25)
+      frazes = Fraze.find(random_ids)
+      frazes.each do |fraze|
+        UserFraze.create!(user: current_user, fraze: fraze, checked: false)
+      end
+      redirect_to frazes_path, notice: "Game created"
+    end
+  end
+
+  def game
+    if UserFraze.where(user: current_user).count != 25
+      redirect_to frazes_path, alert: "Create game first"
+    else
+      @user_frazes = UserFraze.where(user: current_user)
+    end
+  end
+
   # GET /frazes
   # GET /frazes.json
   def index

@@ -1,2 +1,6 @@
 %li
   = link_to "Frazes", frazes_path
+%li
+  = link_to "Create Game", create_game_frazes_path, data: { confirm: 'Are you sure? It will delete current game' }
+%li
+  = link_to "Your game", game_frazes_path
