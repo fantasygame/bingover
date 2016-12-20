@@ -11,8 +11,9 @@
       %th
 
   %tbody
-    - @frazes.each do |fraze|
+    - @frazes.each_with_index do |fraze, index|
       %tr
+        %td= @frazes.count - index
         %td= fraze.body
         %td
           .btn-group
