@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
+  has_many :user_frazes
+  has_many :frazes, through: :user_frazes
 
   def set_default_role
     self.role ||= :user
