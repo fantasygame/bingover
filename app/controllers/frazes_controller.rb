@@ -11,7 +11,7 @@ class FrazesController < ApplicationController
       frazes.each do |fraze|
         UserFraze.create!(user: current_user, fraze: fraze, checked: false)
       end
-      redirect_to frazes_path, notice: "Game created"
+      redirect_to game_frazes_path
     end
   end
 
@@ -19,7 +19,18 @@ class FrazesController < ApplicationController
     if UserFraze.where(user: current_user).count != 25
       redirect_to frazes_path, alert: "Create game first"
     else
-      @user_frazes = UserFraze.where(user: current_user)
+      @user_frazes = UserFraze.where(user: current_user).order(:created_at)
+    end
+  end
+
+  def toggle_check
+    if UserFraze.exists?(params[:user_fraze_id])
+      user_fraze = UserFraze.find(params[:user_fraze_id])
+      user_fraze.checked = !user_fraze.checked
+      user_fraze.save
+      redirect_to game_frazes_path
+    else
+      redirect_to game_frazes_path, alert: "Fraze not found"
     end
   end
 
